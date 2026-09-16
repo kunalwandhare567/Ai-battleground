@@ -247,7 +247,7 @@ export default function MatchConsoleView() {
         .eq('round', Number(currentRound))
         .eq('is_active', true)
         .order('id', { ascending: true })
-        .limit(5);
+        .limit(10);
 
       if (pool) setActiveRoundQuestions(pool);
     }
@@ -509,7 +509,7 @@ export default function MatchConsoleView() {
   }, [match?.id]);
 
   // Derived timer & question states for active round
-  const totalQuestionsCount = activeRoundQuestions.length || 5;
+  const totalQuestionsCount = activeRoundQuestions.length || 10;
   const totalRoundDuration = totalQuestionsCount * 10;
 
   const isRoundActive = match?.status === 'round1' || match?.status === 'round2' || match?.status === 'round3';
@@ -593,7 +593,7 @@ export default function MatchConsoleView() {
     }
   };
 
-  // Helper to assign random round questions per player (guaranteeing 5 DISTINCT questions per player per round, same set & order for all players, avoiding recent matches)
+  // Helper to assign random round questions per player (guaranteeing 10 DISTINCT questions per player per round, same set & order for all players, avoiding recent matches)
   const assignRoundQuestionsForPlayers = async (matchId, roundNum) => {
     // 1 & 2. Load current players
     const { data: currentPlayers } = await supabase
@@ -643,13 +643,13 @@ export default function MatchConsoleView() {
     allQuestions.forEach((q) => uniqueQuestionsMap.set(q.id, q));
     const fullPool = Array.from(uniqueQuestionsMap.values());
 
-    if (fullPool.length < 5) return;
+    if (fullPool.length === 0) return;
 
     // 6. Remove recently used question IDs from the pool
     let eligiblePool = fullPool.filter((q) => !recentQuestionIds.has(q.id));
 
-    // 7. Fallback: If fewer than 5 remain, use the full active question pool
-    if (eligiblePool.length < 5) {
+    // 7. Fallback: If fewer than 10 remain, use the full active question pool
+    if (eligiblePool.length < 10) {
       eligiblePool = [...fullPool];
     }
 
@@ -660,8 +660,8 @@ export default function MatchConsoleView() {
       [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
     }
 
-    // 9. Select exactly 5 question IDs
-    const selectedQuestions = shuffled.slice(0, 5);
+    // 9. Select exactly 10 question IDs
+    const selectedQuestions = shuffled.slice(0, 10);
 
     // 10. Delete old assignments for this match and round
     await supabase
@@ -670,7 +670,7 @@ export default function MatchConsoleView() {
       .eq('match_id', matchId)
       .eq('round', roundNum);
 
-    // 11. Loop through currentPlayers: Insert the same 5 question IDs in the same order for each player
+    // 11. Loop through currentPlayers: Insert the same 10 question IDs in the same order for each player
     const rowsToInsert = [];
     currentPlayers.forEach((player) => {
       selectedQuestions.forEach((q, idx) => {
@@ -1187,7 +1187,7 @@ export default function MatchConsoleView() {
                       fontWeight: 800,
                       letterSpacing: '0.5px'
                     }}>
-                      QUESTION {currentQIndex + 1} / {activeRoundQuestions.length || 5}
+                      QUESTION {currentQIndex + 1} / {totalQuestionsCount}
                     </span>
 
                     <span style={{

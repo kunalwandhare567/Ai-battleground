@@ -106,7 +106,7 @@ export default function PlayerView() {
 
   // Derived timer & question states for player
   const isRoundActive = match?.status === 'round1' || match?.status === 'round2' || match?.status === 'round3';
-  const totalQuestionsCount = questions.length || 5;
+  const totalQuestionsCount = questions.length || 10;
   const totalRoundDuration = totalQuestionsCount * 10;
   const startedAtMs = (isRoundActive && match?.round_started_at) ? new Date(match.round_started_at).getTime() : nowMs;
   const elapsedSec = Math.max(0, (nowMs - startedAtMs) / 1000);
@@ -343,7 +343,7 @@ export default function PlayerView() {
             uniqueMap.set(q.question_id, q);
           }
         });
-        data = Array.from(uniqueMap.values()).slice(0, 5);
+        data = Array.from(uniqueMap.values()).slice(0, 10);
 
         const rowsToInsert = data.map((qItem, idx) => ({
           match_id: matchId,
@@ -353,6 +353,23 @@ export default function PlayerView() {
           position: idx + 1
         }));
         await supabase.from('match_round_questions').insert(rowsToInsert);
+      } else {
+        // Direct question pool fallback if match_round_questions is empty or not yet assigned
+        const { data: poolData } = await supabase
+          .from('questions')
+          .select('*')
+          .eq('round', Number(roundNum))
+          .eq('is_active', true)
+          .order('id', { ascending: true })
+          .limit(10);
+
+        if (poolData && poolData.length > 0) {
+          data = poolData.map((q, idx) => ({
+            question_id: q.id,
+            position: idx + 1,
+            questions: q
+          }));
+        }
       }
     }
 
@@ -691,10 +708,29 @@ export default function PlayerView() {
   const currentQ = questions[currentQIndex];
   const currentAnswer = submittedAnswersMap[currentQ?.id];
   const isAnswerSubmitted = !!currentAnswer || questionTimeLeftSec <= 0;
-  const selectedOption = currentAnswer?.selected_option || null;
+  // Active Round Loading / Question Syncing Screen
+  if (isRoundActive && !isRoundQuestionsComplete && (!currentQ || questions.length === 0)) {
+    const avatar = getPlayerAvatar(player?.display_name || 'Player');
+    return (
+      <ArenaBackground>
+        <div style={playerContainerStyle}>
+          <div className="card-light" style={{ width: '100%', maxWidth: '380px', textAlign: 'center' }}>
+            <div className="avatar-badge" style={{ background: avatar.bgColor, width: '64px', height: '64px', fontSize: '2rem', margin: '0 auto 1rem' }}>
+              {avatar.emoji}
+            </div>
+            <h2 style={{ fontSize: '1.5rem', color: '#2D3436' }}>PREPARING ROUND {match?.current_round || 1}...</h2>
+            <p style={{ color: '#636E72', fontSize: '0.9rem', marginTop: '0.5rem' }}>
+              Synchronizing questions with host display...
+            </p>
+          </div>
+        </div>
+      </ArenaBackground>
+    );
+  }
 
   if (isRoundActive && currentQ && !isRoundQuestionsComplete) {
     const avatar = getPlayerAvatar(player.display_name);
+    const selectedOption = currentAnswer?.selected_option || null;
 
     return (
       <div key={currentQ.id} style={gameplayContainerStyle}>
@@ -1012,7 +1048,7 @@ export default function PlayerView() {
               </div>
               <div style={{ background: '#FFFFFF', padding: '0.75rem', borderRadius: '12px', border: '1px solid #E2E8F0' }}>
                 <span style={{ fontSize: '0.75rem', color: '#636E72', fontWeight: 700, display: 'block' }}>ACCURACY</span>
-                <strong style={{ fontSize: '1.5rem', color: '#0984E3' }}>{displayRoundCorrect} / 5</strong>
+                <strong style={{ fontSize: '1.5rem', color: '#0984E3' }}>{displayRoundCorrect} / {totalQuestionsCount}</strong>
               </div>
             </div>
 
