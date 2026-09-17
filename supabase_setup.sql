@@ -1319,6 +1319,266 @@ VALUES
   'AI Code Assistant',
   'Laptop + Robot = Coding Copilots (GitHub Copilot / Cursor).',
   true
+),
+(
+  '6ae7c568-5203-4b71-a23b-ec47e31b6710',
+  3,
+  'emoji_mcq',
+  '🧠🏗️',
+  NULL,
+  NULL,
+  NULL,
+  '["Deep Learning","Brain Builder","Smart Architecture","Neural Storage"]'::JSONB,
+  'Deep Learning',
+  'Brain + Construction = Deep Learning, where layered neural networks learn complex patterns.',
+  true
+),
+(
+  'e61e373e-163c-4c95-b3f4-ff3974c75609',
+  3,
+  'emoji_mcq',
+  '🧠📖🤖',
+  NULL,
+  NULL,
+  NULL,
+  '["Large Language Model","AI Dictionary","Digital Library","Smart Reader"]'::JSONB,
+  'Large Language Model',
+  'Brain + Book + Robot = Large Language Model, trained on vast amounts of text.',
+  true
+),
+(
+  '7c56c1da-7409-4d1b-bcbc-a1eb071761a1',
+  3,
+  'emoji_mcq',
+  '⚙️🤖✨',
+  NULL,
+  NULL,
+  NULL,
+  '["Generative AI","AI Automation","Robot Factory","Creative Machine"]'::JSONB,
+  'Generative AI',
+  'Machine + Robot + Sparkles = Generative AI, which creates new content such as text, images, audio, and video.',
+  true
+),
+(
+  '72f2886e-cc6b-4b9d-ad30-1012c8f18e9e',
+  3,
+  'emoji_mcq',
+  '🔤✂️🤖',
+  NULL,
+  NULL,
+  NULL,
+  '["Tokenization","Text Editing","Word Processor","Code Parsing"]'::JSONB,
+  'Tokenization',
+  'Letters + Cutting + Robot = Tokenization, breaking text into smaller pieces called tokens.',
+  true
+),
+(
+  'b7770b8b-c9ff-4174-ab3f-3ae4bd2ab610',
+  3,
+  'emoji_mcq',
+  '🔗🧠',
+  NULL,
+  NULL,
+  NULL,
+  '["Embeddings","Brain Link","Semantic Search","Data Connection"]'::JSONB,
+  'Embeddings',
+  'Connected symbols + Brain = Embeddings, representing words or data as numerical vectors.',
+  true
+),
+(
+  '4e325cda-7752-4436-8a22-80ccf8c95c62',
+  3,
+  'emoji_mcq',
+  '🗄️🔢🧠',
+  NULL,
+  NULL,
+  NULL,
+  '["Vector Database","Number Storage","AI Database","Cloud Storage"]'::JSONB,
+  'Vector Database',
+  'Storage + Numbers + Brain = Vector Database, designed to store and search vector representations.',
+  true
+),
+(
+  '68f66f68-a853-4c76-8c3d-f6f3ca64c537',
+  3,
+  'emoji_mcq',
+  '🧠🔄⚡',
+  NULL,
+  NULL,
+  NULL,
+  '["Transformer Model","Power Transformer","Model Switching","Neural Circuit"]'::JSONB,
+  'Transformer Model',
+  'Brain + Transformation + Energy = Transformer Model, a neural architecture widely used in modern AI.',
+  true
+),
+(
+  '55664ecf-f7a8-49b1-95da-d9b888472b3a',
+  3,
+  'emoji_mcq',
+  '👥🤖🎨',
+  NULL,
+  NULL,
+  NULL,
+  '["Generative Adversarial Network","AI Art Team","Robot Competition","Creative Network"]'::JSONB,
+  'Generative Adversarial Network',
+  'Two AI sides + Robot + Art = Generative Adversarial Network, where competing networks generate and evaluate content.',
+  true
+),
+(
+  '0921b2b6-bce0-4704-b73f-9a8d6fd36c08',
+  3,
+  'emoji_mcq',
+  '🌫️🖼️🤖',
+  NULL,
+  NULL,
+  NULL,
+  '["Diffusion Model","Image Blur","Cloud Rendering","Visual Noise"]'::JSONB,
+  'Diffusion Model',
+  'Cloud + Image + Robot = Diffusion Model, a popular approach for generating images from noise.',
+  true
+),
+(
+  '53305023-48a1-4344-b958-43bddc3e4663',
+  3,
+  'emoji_mcq',
+  '🎯❓🤖',
+  NULL,
+  NULL,
+  NULL,
+  '["Zero-Shot Learning","Random Guessing","Target Training","AI Testing"]'::JSONB,
+  'Zero-Shot Learning',
+  'Target + Question + Robot = Zero-Shot Learning, where an AI performs a task without task-specific examples.',
+  true
+),
+(
+  'd157b542-9dc3-4567-86cc-99c9c0794146',
+  3,
+  'emoji_mcq',
+  '🎯👥🤖',
+  NULL,
+  NULL,
+  NULL,
+  '["Few-Shot Learning","Small Dataset","Limited Training","Mini Model"]'::JSONB,
+  'Few-Shot Learning',
+  'Target + Small Group + Robot = Few-Shot Learning, where a model learns from only a few examples.',
+  true
+),
+(
+  'cf8b209e-846c-4ce2-b6bb-52042e0174af',
+  3,
+  'emoji_mcq',
+  '🖼️🎵📝🤖',
+  NULL,
+  NULL,
+  NULL,
+  '["Multimodal AI","Media Player AI","Content Mixer","Digital Media"]'::JSONB,
+  'Multimodal AI',
+  'Image + Music + Text + Robot = Multimodal AI, which can work with multiple types of data.',
+  true
+),
+(
+  '9606addb-2767-4faf-a5f1-6ca32e0ff081',
+  3,
+  'emoji_mcq',
+  '⚖️🤖',
+  NULL,
+  NULL,
+  NULL,
+  '["AI Bias","AI Fairness","Algorithm Scale","Model Balance"]'::JSONB,
+  'AI Bias',
+  'Balance scale + Robot = AI Bias, referring to systematic unfairness or skewed outcomes in AI systems.',
+  true
+),
+(
+  '66948b2f-4278-480c-a365-e514a4e8ebdd',
+  3,
+  'emoji_mcq',
+  '🛡️⚖️🤖',
+  NULL,
+  NULL,
+  NULL,
+  '["AI Ethics","Cybersecurity","Digital Law","AI Governance"]'::JSONB,
+  'AI Ethics',
+  'Shield + Balance + Robot = AI Ethics, concerning responsible and fair development and use of AI.',
+  true
+),
+(
+  '8a2f44d1-6ade-48dc-95b9-45b086c3d5f0',
+  3,
+  'emoji_mcq',
+  '🔍🧠💡',
+  NULL,
+  NULL,
+  NULL,
+  '["Explainable AI","AI Search","Transparent Model","Smart Diagnosis"]'::JSONB,
+  'Explainable AI',
+  'Magnifying Glass + Brain + Lightbulb = Explainable AI, focused on making AI decisions easier to understand.',
+  true
+),
+(
+  '6b898ae1-6b09-4b5d-8be5-4e9e798e2cd3',
+  3,
+  'emoji_mcq',
+  '📱🤖⚡',
+  NULL,
+  NULL,
+  NULL,
+  '["Edge AI","Mobile AI","Fast Computing","Device Learning"]'::JSONB,
+  'Edge AI',
+  'Mobile device + Robot + Lightning = Edge AI, running AI processing closer to where data is generated.',
+  true
+),
+(
+  '37a479c4-e9ed-4846-90f9-55b4caa49ec4',
+  3,
+  'emoji_mcq',
+  '🤝📱🌐🤖',
+  NULL,
+  NULL,
+  NULL,
+  '["Federated Learning","Social AI","Distributed Chatbot","Network Training"]'::JSONB,
+  'Federated Learning',
+  'Connected devices + Globe + Robot = Federated Learning, where models learn across devices without centralizing raw data.',
+  true
+),
+(
+  'cf44d280-1de9-489a-920c-d536e46ceb60',
+  3,
+  'emoji_mcq',
+  '📦📊🤖',
+  NULL,
+  NULL,
+  NULL,
+  '["Synthetic Data","Data Packaging","Artificial Dataset","Data Compression"]'::JSONB,
+  'Synthetic Data',
+  'Package + Data + Robot = Synthetic Data, artificially generated data used for AI training and testing.',
+  true
+),
+(
+  'a7ce3df6-a5b0-4213-9123-022522aed052',
+  3,
+  'emoji_mcq',
+  '👁️📄🔤',
+  NULL,
+  NULL,
+  NULL,
+  '["Optical Character Recognition","Document Scanner","Text Vision","Image Reader"]'::JSONB,
+  'Optical Character Recognition',
+  'Eye + Document + Letters = Optical Character Recognition, converting text in images into machine-readable text.',
+  true
+),
+(
+  '0c91abe4-f357-4ea4-b0b0-1e861ecd9905',
+  3,
+  'emoji_mcq',
+  '🚨💉🤖',
+  NULL,
+  NULL,
+  NULL,
+  '["AI Medical Diagnosis","Health Monitor","Robot Doctor","Medical Imaging"]'::JSONB,
+  'AI Medical Diagnosis',
+  'Warning + Medical Symbol + Robot = AI-assisted medical diagnosis and detection of health conditions.',
+  true
 )
 ON CONFLICT (id) DO UPDATE SET
   round = EXCLUDED.round,
@@ -1345,7 +1605,7 @@ VALUES
   3,
   '2026-09-15 16:17:44.299+00',
   15,
-  '2026-09-16T21:21:48.254Z'
+  '2026-09-17T01:59:36.811Z'
 ),
 (
   '144cd33d-4b84-4fab-9d50-e39ca3e1821d',
@@ -1355,7 +1615,7 @@ VALUES
   3,
   '2026-09-16 11:53:30.205+00',
   15,
-  '2026-09-16T21:21:48.256Z'
+  '2026-09-17T01:59:36.813Z'
 ),
 (
   '1d656a24-a6d3-4e9d-a6ce-293e1f039e85',
@@ -1365,7 +1625,7 @@ VALUES
   3,
   '2026-09-15 20:32:58.896+00',
   15,
-  '2026-09-16T21:21:48.256Z'
+  '2026-09-17T01:59:36.813Z'
 ),
 (
   '1e944440-9340-4761-b5aa-712424f84244',
@@ -1375,7 +1635,7 @@ VALUES
   0,
   NULL,
   15,
-  '2026-09-16T21:21:48.256Z'
+  '2026-09-17T01:59:36.813Z'
 ),
 (
   '264bc89b-c05e-418b-8581-e7ef030090b9',
@@ -1385,7 +1645,7 @@ VALUES
   3,
   '2026-09-15 18:06:26.613+00',
   15,
-  '2026-09-16T21:21:48.256Z'
+  '2026-09-17T01:59:36.813Z'
 ),
 (
   '35219079-e23f-49f2-a64d-c8b3bf714ee9',
@@ -1395,7 +1655,7 @@ VALUES
   3,
   '2026-09-16 17:44:15.075+00',
   15,
-  '2026-09-16T21:21:48.256Z'
+  '2026-09-17T01:59:36.813Z'
 ),
 (
   '37fe6f52-f258-4eea-b8e6-3a8b4ae4f9a1',
@@ -1405,7 +1665,7 @@ VALUES
   3,
   '2026-09-16 07:35:34.621+00',
   15,
-  '2026-09-16T21:21:48.256Z'
+  '2026-09-17T01:59:36.813Z'
 ),
 (
   '47ed4afa-bc9e-436f-a9ec-8a6779f2b8dc',
@@ -1415,7 +1675,7 @@ VALUES
   3,
   '2026-09-16 17:47:15.456+00',
   15,
-  '2026-09-16T21:21:48.256Z'
+  '2026-09-17T01:59:36.813Z'
 ),
 (
   '4e72a59c-7f70-498a-9b1e-bf1fdc8ca57a',
@@ -1425,7 +1685,7 @@ VALUES
   3,
   '2026-09-15 17:05:16.355+00',
   15,
-  '2026-09-16T21:21:48.256Z'
+  '2026-09-17T01:59:36.813Z'
 ),
 (
   '4f68b92f-e276-4630-a250-9c6c1cf1e6f8',
@@ -1435,7 +1695,7 @@ VALUES
   3,
   '2026-09-15 19:27:06.443+00',
   15,
-  '2026-09-16T21:21:48.256Z'
+  '2026-09-17T01:59:36.813Z'
 ),
 (
   '62492d4b-cec1-42d7-ac95-35d1b7595022',
@@ -1445,7 +1705,7 @@ VALUES
   3,
   '2026-09-15 18:52:10.326+00',
   15,
-  '2026-09-16T21:21:48.256Z'
+  '2026-09-17T01:59:36.813Z'
 ),
 (
   '8203b2f9-5954-4281-ac8a-c3a4014c0314',
@@ -1455,7 +1715,7 @@ VALUES
   3,
   '2026-09-16 10:29:41.478+00',
   15,
-  '2026-09-16T21:21:48.256Z'
+  '2026-09-17T01:59:36.813Z'
 ),
 (
   '8c68c517-c8f0-435e-a131-71045d26b67f',
@@ -1465,7 +1725,7 @@ VALUES
   3,
   '2026-09-16 17:12:25.379+00',
   15,
-  '2026-09-16T21:21:48.256Z'
+  '2026-09-17T01:59:36.813Z'
 ),
 (
   '8c94b08a-6f86-4e05-816f-78fe60450f4b',
@@ -1475,7 +1735,7 @@ VALUES
   3,
   '2026-09-16 08:23:39.262+00',
   15,
-  '2026-09-16T21:21:48.256Z'
+  '2026-09-17T01:59:36.813Z'
 ),
 (
   '9ceeff7d-2096-416d-8e0a-679e1e8d9ba9',
@@ -1485,7 +1745,7 @@ VALUES
   3,
   '2026-09-15 16:32:48.348+00',
   15,
-  '2026-09-16T21:21:48.256Z'
+  '2026-09-17T01:59:36.813Z'
 ),
 (
   '9d097fb9-b5a4-49ea-9ac1-54fd1e169179',
@@ -1495,7 +1755,7 @@ VALUES
   3,
   '2026-09-15 18:16:08.197+00',
   15,
-  '2026-09-16T21:21:48.256Z'
+  '2026-09-17T01:59:36.813Z'
 ),
 (
   'a463d15d-0e6c-41cd-b251-deeb87d8c85c',
@@ -1505,7 +1765,7 @@ VALUES
   3,
   '2026-09-15 17:18:28.187+00',
   15,
-  '2026-09-16T21:21:48.256Z'
+  '2026-09-17T01:59:36.813Z'
 ),
 (
   'bc52c02f-c108-46d4-b4b3-5d895228e21a',
@@ -1515,7 +1775,7 @@ VALUES
   3,
   '2026-09-15 17:32:29.309+00',
   15,
-  '2026-09-16T21:21:48.256Z'
+  '2026-09-17T01:59:36.813Z'
 ),
 (
   'bccc8621-3497-4d8e-9ef0-32bb32796873',
@@ -1525,7 +1785,7 @@ VALUES
   3,
   '2026-09-15 19:20:15.735+00',
   15,
-  '2026-09-16T21:21:48.256Z'
+  '2026-09-17T01:59:36.813Z'
 ),
 (
   'e257ee3e-ae1e-47b1-a783-eb01dfe7f755',
@@ -1535,7 +1795,7 @@ VALUES
   2,
   '2026-09-16 17:48:48.013+00',
   15,
-  '2026-09-16T21:21:48.256Z'
+  '2026-09-17T01:59:36.813Z'
 ),
 (
   'e73ffce7-e431-4e8a-9865-6b786403be63',
@@ -1545,7 +1805,7 @@ VALUES
   3,
   '2026-09-15 17:23:11.997+00',
   15,
-  '2026-09-16T21:21:48.256Z'
+  '2026-09-17T01:59:36.813Z'
 )
 ON CONFLICT (id) DO UPDATE SET
   room_code = EXCLUDED.room_code,
@@ -2692,7 +2952,7 @@ VALUES
   true,
   136,
   2716,
-  '2026-09-16T21:21:48.257Z'
+  '2026-09-17T01:59:36.814Z'
 ),
 (
   '00cdfa24-e520-440b-8925-0a582997e6f3',
@@ -2704,7 +2964,7 @@ VALUES
   false,
   0,
   7944,
-  '2026-09-16T21:21:48.257Z'
+  '2026-09-17T01:59:36.814Z'
 ),
 (
   '0109bfee-48aa-48c1-9b8a-2f3e954e16a9',
@@ -2716,7 +2976,7 @@ VALUES
   true,
   133,
   3350,
-  '2026-09-16T21:21:48.257Z'
+  '2026-09-17T01:59:36.814Z'
 ),
 (
   '012102b7-00ca-4003-832e-bb346d38d13f',
@@ -2728,7 +2988,7 @@ VALUES
   true,
   123,
   5311,
-  '2026-09-16T21:21:48.257Z'
+  '2026-09-17T01:59:36.814Z'
 ),
 (
   '012810d4-f866-4701-981e-10d33cb96c7b',
@@ -2740,7 +3000,7 @@ VALUES
   true,
   122,
   5554,
-  '2026-09-16T21:21:48.257Z'
+  '2026-09-17T01:59:36.814Z'
 ),
 (
   '01a18cae-d921-45f4-919e-7edef25600c0',
@@ -2752,7 +3012,7 @@ VALUES
   false,
   0,
   2875,
-  '2026-09-16T21:21:48.257Z'
+  '2026-09-17T01:59:36.814Z'
 ),
 (
   '02562e69-9e1f-4e19-a060-ac8672907d4d',
@@ -2764,7 +3024,7 @@ VALUES
   false,
   0,
   1663,
-  '2026-09-16T21:21:48.257Z'
+  '2026-09-17T01:59:36.814Z'
 ),
 (
   '029b69c3-6fb1-4aea-b3c2-7c8921d1df55',
@@ -2776,7 +3036,7 @@ VALUES
   true,
   117,
   6547,
-  '2026-09-16T21:21:48.257Z'
+  '2026-09-17T01:59:36.814Z'
 ),
 (
   '029e0164-1055-4e09-b558-669cf8714060',
@@ -2788,7 +3048,7 @@ VALUES
   true,
   139,
   2151,
-  '2026-09-16T21:21:48.257Z'
+  '2026-09-17T01:59:36.814Z'
 ),
 (
   '02c58885-f263-4c01-8003-5c3dae714de5',
@@ -2800,7 +3060,7 @@ VALUES
   false,
   0,
   4730,
-  '2026-09-16T21:21:48.257Z'
+  '2026-09-17T01:59:36.814Z'
 ),
 (
   '037245ea-8153-4f55-ad56-1e6e624ffef6',
@@ -2812,7 +3072,7 @@ VALUES
   true,
   128,
   4401,
-  '2026-09-16T21:21:48.257Z'
+  '2026-09-17T01:59:36.814Z'
 ),
 (
   '03917d62-7c92-45fc-ac07-e10bfb66fa68',
@@ -2824,7 +3084,7 @@ VALUES
   true,
   139,
   2243,
-  '2026-09-16T21:21:48.257Z'
+  '2026-09-17T01:59:36.814Z'
 ),
 (
   '039edc1d-5444-4f27-af72-1631a63c21a8',
@@ -2836,7 +3096,7 @@ VALUES
   true,
   139,
   2266,
-  '2026-09-16T21:21:48.257Z'
+  '2026-09-17T01:59:36.814Z'
 ),
 (
   '03d470de-6c91-411a-a275-86aebf860bdd',
@@ -2848,7 +3108,7 @@ VALUES
   true,
   142,
   1540,
-  '2026-09-16T21:21:48.257Z'
+  '2026-09-17T01:59:36.814Z'
 ),
 (
   '045e61a0-d942-4e4a-8928-7a0a76d10ee9',
@@ -2860,7 +3120,7 @@ VALUES
   true,
   113,
   7312,
-  '2026-09-16T21:21:48.257Z'
+  '2026-09-17T01:59:36.814Z'
 ),
 (
   '048a7f88-1c8d-444e-a54a-3f5e9b7dd5a1',
@@ -2872,7 +3132,7 @@ VALUES
   true,
   127,
   4658,
-  '2026-09-16T21:21:48.257Z'
+  '2026-09-17T01:59:36.814Z'
 ),
 (
   '04a2ada0-66e6-4971-b7a9-086a6f65b9c9',
@@ -2884,7 +3144,7 @@ VALUES
   true,
   138,
   2362,
-  '2026-09-16T21:21:48.257Z'
+  '2026-09-17T01:59:36.814Z'
 ),
 (
   '04de496e-654f-47f9-8324-4f3fb297a93c',
@@ -2896,7 +3156,7 @@ VALUES
   true,
   143,
   1462,
-  '2026-09-16T21:21:48.257Z'
+  '2026-09-17T01:59:36.814Z'
 ),
 (
   '056dfcd3-e150-427c-9a1b-6b8492ee98b9',
@@ -2908,7 +3168,7 @@ VALUES
   true,
   134,
   3208,
-  '2026-09-16T21:21:48.257Z'
+  '2026-09-17T01:59:36.814Z'
 ),
 (
   '059c4115-3c4a-4763-b5b8-45ef690783e5',
@@ -2920,7 +3180,7 @@ VALUES
   true,
   143,
   1454,
-  '2026-09-16T21:21:48.257Z'
+  '2026-09-17T01:59:36.814Z'
 ),
 (
   '05e99eb6-343c-4979-ae47-165c245eb773',
@@ -2932,7 +3192,7 @@ VALUES
   true,
   137,
   2699,
-  '2026-09-16T21:21:48.257Z'
+  '2026-09-17T01:59:36.814Z'
 ),
 (
   '063a586d-a75f-4948-b3e8-d03b72ee83b4',
@@ -2944,7 +3204,7 @@ VALUES
   false,
   0,
   3959,
-  '2026-09-16T21:21:48.257Z'
+  '2026-09-17T01:59:36.814Z'
 ),
 (
   '066bcf35-ab33-45d1-a36a-761ed6ca317a',
@@ -2956,7 +3216,7 @@ VALUES
   true,
   139,
   2104,
-  '2026-09-16T21:21:48.257Z'
+  '2026-09-17T01:59:36.814Z'
 ),
 (
   '0690aa1b-7ba2-4614-8612-fb1d9506f096',
@@ -2968,7 +3228,7 @@ VALUES
   true,
   117,
   6653,
-  '2026-09-16T21:21:48.257Z'
+  '2026-09-17T01:59:36.814Z'
 ),
 (
   '06c0ac05-f981-4404-b7c7-e8128e038f7a',
@@ -2980,7 +3240,7 @@ VALUES
   true,
   129,
   4226,
-  '2026-09-16T21:21:48.257Z'
+  '2026-09-17T01:59:36.814Z'
 ),
 (
   '06d5755d-738c-45ca-9524-581ce9e65967',
@@ -2992,7 +3252,7 @@ VALUES
   true,
   121,
   5833,
-  '2026-09-16T21:21:48.257Z'
+  '2026-09-17T01:59:36.814Z'
 ),
 (
   '071580b8-7ec4-4862-a27d-557f95f84623',
@@ -3004,7 +3264,7 @@ VALUES
   true,
   144,
   1233,
-  '2026-09-16T21:21:48.257Z'
+  '2026-09-17T01:59:36.814Z'
 ),
 (
   '07b51f41-70e8-4a80-aff4-765bac47377c',
@@ -3016,7 +3276,7 @@ VALUES
   true,
   133,
   3367,
-  '2026-09-16T21:21:48.257Z'
+  '2026-09-17T01:59:36.814Z'
 ),
 (
   '07cb9515-28a4-41d8-b2a2-5d142446fd65',
@@ -3028,7 +3288,7 @@ VALUES
   true,
   104,
   9248,
-  '2026-09-16T21:21:48.257Z'
+  '2026-09-17T01:59:36.814Z'
 ),
 (
   '08388877-8ccf-4520-9481-7fd635a8a901',
@@ -3040,7 +3300,7 @@ VALUES
   false,
   0,
   4149,
-  '2026-09-16T21:21:48.257Z'
+  '2026-09-17T01:59:36.814Z'
 ),
 (
   '09298340-c7b2-476f-ac15-269942e44f12',
@@ -3052,7 +3312,7 @@ VALUES
   true,
   113,
   7429,
-  '2026-09-16T21:21:48.257Z'
+  '2026-09-17T01:59:36.814Z'
 ),
 (
   '09726ba1-d0e1-41ad-836c-d458d8a7955b',
@@ -3064,7 +3324,7 @@ VALUES
   false,
   0,
   1381,
-  '2026-09-16T21:21:48.257Z'
+  '2026-09-17T01:59:36.814Z'
 ),
 (
   '09db4052-e22b-4ee1-9e33-89803ee363ac',
@@ -3076,7 +3336,7 @@ VALUES
   true,
   116,
   6788,
-  '2026-09-16T21:21:48.257Z'
+  '2026-09-17T01:59:36.814Z'
 ),
 (
   '0a3d5fd2-1dab-4a2e-b62e-9345a9e4db35',
@@ -3088,7 +3348,7 @@ VALUES
   true,
   141,
   1838,
-  '2026-09-16T21:21:48.257Z'
+  '2026-09-17T01:59:36.814Z'
 ),
 (
   '0b527690-930a-46e3-b90b-a225dfa948bb',
@@ -3100,7 +3360,7 @@ VALUES
   true,
   127,
   4543,
-  '2026-09-16T21:21:48.257Z'
+  '2026-09-17T01:59:36.814Z'
 ),
 (
   '0bc58cb8-85fe-418c-82df-66dd225d9822',
@@ -3112,7 +3372,7 @@ VALUES
   true,
   121,
   5720,
-  '2026-09-16T21:21:48.257Z'
+  '2026-09-17T01:59:36.814Z'
 ),
 (
   '0ca92ac4-8200-43e0-b0b1-df32758e93db',
@@ -3124,7 +3384,7 @@ VALUES
   false,
   0,
   5854,
-  '2026-09-16T21:21:48.257Z'
+  '2026-09-17T01:59:36.814Z'
 ),
 (
   '0cf9d215-d9f5-481b-8342-f7690bb5bb84',
@@ -3136,7 +3396,7 @@ VALUES
   true,
   133,
   3382,
-  '2026-09-16T21:21:48.257Z'
+  '2026-09-17T01:59:36.814Z'
 ),
 (
   '0dbffc29-8f5a-488d-9282-e52ea4bbdad3',
@@ -3148,7 +3408,7 @@ VALUES
   true,
   142,
   1689,
-  '2026-09-16T21:21:48.257Z'
+  '2026-09-17T01:59:36.814Z'
 ),
 (
   '0dda1cb2-426b-4a07-ba79-ea1e8f82c891',
@@ -3160,6 +3420,6 @@ VALUES
   true,
   132,
   3549,
-  '2026-09-16T21:21:48.257Z'
+  '2026-09-17T01:59:36.814Z'
 )
 ON CONFLICT (id) DO NOTHING;
