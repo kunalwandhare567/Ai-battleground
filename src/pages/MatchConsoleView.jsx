@@ -130,7 +130,9 @@ export default function MatchConsoleView() {
   }, []);
 
   // 2. Direct-table aggregate calculation for live standings & round completion counter
-  const fetchLiveLeaderboardAndProgress = async (matchId, currentRound) => {
+  const [currentQAnsweredCount, setCurrentQAnsweredCount] = useState(0);
+
+  const fetchLiveLeaderboardAndProgress = async (matchId, currentRound, currentQId) => {
     if (!matchId) return;
 
     // Fetch players
@@ -165,12 +167,20 @@ export default function MatchConsoleView() {
     // Fetch submitted answers
     const { data: answerRows } = await supabase
       .from('match_answers')
-      .select('player_id, round, is_correct, points_earned')
+      .select('player_id, round, question_id, is_correct, points_earned')
       .eq('match_id', matchId);
 
     const answers = answerRows || [];
 
     let donePlayersCount = 0;
+    let answeredCurrentQCount = 0;
+
+    const activePlayerIds = new Set(activePlayers.map((p) => p.id));
+
+    if (currentQId) {
+      const qAnswers = answers.filter((a) => a.question_id === currentQId && activePlayerIds.has(a.player_id));
+      answeredCurrentQCount = new Set(qAnswers.map((a) => a.player_id)).size;
+    }
 
     const aggregated = playerRows.map((p) => {
       const pAnswers = answers.filter((a) => a.player_id === p.id);
@@ -190,7 +200,7 @@ export default function MatchConsoleView() {
         ? pAnswers.filter((a) => Number(a.round) === Number(currentRound)).length
         : 0;
 
-      const targetRoundCount = assignedCountMap[p.id] || 5;
+      const targetRoundCount = assignedCountMap[p.id] || 10;
 
       if (!p.has_left && roundAnswersCount > 0 && roundAnswersCount >= targetRoundCount) {
         donePlayersCount++;
@@ -217,6 +227,7 @@ export default function MatchConsoleView() {
 
     setLeaderboard(aggregated);
     setAnsweredCount(donePlayersCount);
+    setCurrentQAnsweredCount(answeredCurrentQCount);
   };
 
   // 3. Fetch active round questions for Host Display
@@ -453,11 +464,46 @@ export default function MatchConsoleView() {
     }
   };
 
+  const currentLiveQuestionRef = useRef(null);
+
+  // Derived timer & question states for active round
+  const totalQuestionsCount = activeRoundQuestions.length || 10;
+  const totalRoundDuration = totalQuestionsCount * 10;
+
+  const isRoundActive = match?.status === 'round1' || match?.status === 'round2' || match?.status === 'round3';
+  const startedAtMs = (isRoundActive && match?.round_started_at) ? new Date(match.round_started_at).getTime() : nowMs;
+  const elapsedSec = Math.max(0, (nowMs - startedAtMs) / 1000);
+  const isCountdownActive = isRoundActive && elapsedSec < 4.5;
+  const gameElapsedSec = isCountdownActive ? 0 : Math.max(0, elapsedSec - 4.5);
+  const currentQIndex = Math.min(Math.max(0, totalQuestionsCount - 1), Math.floor(gameElapsedSec / 10));
+  const questionTimeLeftSec = isCountdownActive ? 10 : (gameElapsedSec >= totalRoundDuration ? 0 : Math.max(0, Math.ceil(10 - (gameElapsedSec % 10))));
+  const isRoundQuestionsComplete = isRoundActive && gameElapsedSec >= totalRoundDuration;
+  const currentLiveQuestion = activeRoundQuestions[currentQIndex] || null;
+
+  useEffect(() => {
+    currentLiveQuestionRef.current = currentLiveQuestion;
+  }, [currentLiveQuestion]);
+
+  // Periodic high-frequency polling (every 1.5s) during active rounds to guarantee zero delay
+  useEffect(() => {
+    if (!match?.id || !isRoundActive) return;
+
+    fetchLiveLeaderboardAndProgress(match.id, match.current_round, currentLiveQuestionRef.current?.id);
+
+    const interval = setInterval(() => {
+      if (matchRef.current?.id) {
+        fetchLiveLeaderboardAndProgress(matchRef.current.id, matchRef.current.current_round, currentLiveQuestionRef.current?.id);
+      }
+    }, 1500);
+
+    return () => clearInterval(interval);
+  }, [match?.id, isRoundActive, currentQIndex]);
+
   // 3. Realtime Subscriptions
   useEffect(() => {
     if (!match?.id) return;
 
-    fetchLiveLeaderboardAndProgress(match.id, match.current_round);
+    fetchLiveLeaderboardAndProgress(match.id, match.current_round, currentLiveQuestionRef.current?.id);
 
     // Subscribe to match status changes
     const matchChannel = supabase
@@ -465,7 +511,7 @@ export default function MatchConsoleView() {
       .on('postgres_changes', { event: 'UPDATE', schema: 'public', table: 'matches', filter: `id=eq.${match.id}` }, (payload) => {
         const newMatch = payload.new;
         setMatch(newMatch);
-        fetchLiveLeaderboardAndProgress(newMatch.id, newMatch.current_round);
+        fetchLiveLeaderboardAndProgress(newMatch.id, newMatch.current_round, currentLiveQuestionRef.current?.id);
 
         if (newMatch.round_started_at && (newMatch.status === 'round1' || newMatch.status === 'round2' || newMatch.status === 'round3')) {
           const roundKey = `${newMatch.current_round}_${newMatch.round_started_at}`;
@@ -486,7 +532,7 @@ export default function MatchConsoleView() {
     const playerChannel = supabase
       .channel(`players_${match.id}`)
       .on('postgres_changes', { event: '*', schema: 'public', table: 'match_players', filter: `match_id=eq.${match.id}` }, (payload) => {
-        fetchLiveLeaderboardAndProgress(match.id, matchRef.current?.current_round);
+        fetchLiveLeaderboardAndProgress(match.id, matchRef.current?.current_round, currentLiveQuestionRef.current?.id);
         if (payload.eventType === 'INSERT' && matchRef.current?.status === 'lobby') {
           audioManager?.playPlayerJoined?.();
         }
@@ -497,7 +543,7 @@ export default function MatchConsoleView() {
     const answersChannel = supabase
       .channel(`answers_${match.id}`)
       .on('postgres_changes', { event: '*', schema: 'public', table: 'match_answers', filter: `match_id=eq.${match.id}` }, () => {
-        fetchLiveLeaderboardAndProgress(match.id, matchRef.current?.current_round);
+        fetchLiveLeaderboardAndProgress(match.id, matchRef.current?.current_round, currentLiveQuestionRef.current?.id);
       })
       .subscribe();
 
@@ -507,20 +553,6 @@ export default function MatchConsoleView() {
       supabase.removeChannel(answersChannel);
     };
   }, [match?.id]);
-
-  // Derived timer & question states for active round
-  const totalQuestionsCount = activeRoundQuestions.length || 10;
-  const totalRoundDuration = totalQuestionsCount * 10;
-
-  const isRoundActive = match?.status === 'round1' || match?.status === 'round2' || match?.status === 'round3';
-  const startedAtMs = (isRoundActive && match?.round_started_at) ? new Date(match.round_started_at).getTime() : nowMs;
-  const elapsedSec = Math.max(0, (nowMs - startedAtMs) / 1000);
-  const isCountdownActive = isRoundActive && elapsedSec < 4.5;
-  const gameElapsedSec = isCountdownActive ? 0 : Math.max(0, elapsedSec - 4.5);
-  const currentQIndex = Math.min(Math.max(0, totalQuestionsCount - 1), Math.floor(gameElapsedSec / 10));
-  const questionTimeLeftSec = isCountdownActive ? 10 : (gameElapsedSec >= totalRoundDuration ? 0 : Math.max(0, Math.ceil(10 - (gameElapsedSec % 10))));
-  const isRoundQuestionsComplete = isRoundActive && gameElapsedSec >= totalRoundDuration;
-  const currentLiveQuestion = activeRoundQuestions[currentQIndex] || null;
 
   // Guarded Auto-Transition to Round Results / Final Results on 10s Timer Expiry of Final Question
   const autoTransitionKeyRef = useRef(null);
@@ -1115,8 +1147,8 @@ export default function MatchConsoleView() {
                 {(match.status === 'round1' || match.status === 'round2' || match.status === 'round3') && (
                   <div style={{ background: '#161334', border: '1px solid #00B894', padding: '0.45rem 1.2rem', borderRadius: '14px', textAlign: 'center' }}>
                     <span style={{ color: '#A29BFE', fontSize: '0.75rem', fontWeight: 700, display: 'block' }}>ANSWERED PROGRESS</span>
-                    <strong style={{ fontSize: '1.2rem', color: '#00B894' }}>
-                      {answeredCount} / {players.length} Players Done
+                    <strong style={{ fontSize: '1.15rem', color: '#00B894' }}>
+                      {currentQAnsweredCount} / {players.length} Answered (Q{currentQIndex + 1})
                     </strong>
                   </div>
                 )}
